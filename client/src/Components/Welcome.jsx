@@ -4,8 +4,8 @@ import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 import { TransactionContext } from "../Context/Transactioncontext";
 import { shortenAddress } from "../Utils/shortenAddress";
- 
-import {Loader } from "./Loader";
+
+import { Loader } from "./Loader";
 
 const CommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 
@@ -22,7 +22,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 
 const Welcome = () => {
 
-  const { connectWallet, currentAccount, formData, sendTransaction, handleChange , isLoading} = useContext(TransactionContext);
+  const { connectWallet, currentAccount, formData, sendTransaction, handleChange, isLoading } = useContext(TransactionContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,25 +59,27 @@ const Welcome = () => {
             >
               <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black duration-300 -translate-x-full bg-white group-hover:translate-x-0 ease">
                 <svg
-                  class="w-6 h-6"
+                  className="w-6 h-6" // Use className instead of class
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"  
+                    strokeWidth="2"     
                     d="M14 5l7 7m0 0l-7 7m7-7H3"
                   ></path>
                 </svg>
               </span>
               <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">
-                ConnectWallet
+                Connect Wallet
               </span>
-              <span class="relative invisible">Connect Wallet</span>
-            </button>)}
+              <span className="relative invisible">Connect Wallet</span>
+            </button>
+          )}
+
 
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">

@@ -102,20 +102,25 @@ export const TransactionProvider = ({ children }) => {
         }
     };
 
-
     const connectWallet = async () => {
         try {
-            if (!ethereum) return alert("Please install MetaMask.");
-            const accounts = await ethereum.request({ method: "eth_requestAccounts", });
-
+            console.log("Attempting to connect wallet...");
+            if (!ethereum) {
+                console.log("No ethereum object");
+                return alert("Please install MetaMask.");
+            }
+    
+            const accounts = await ethereum.request({ method: "eth_requestAccounts" });
+            console.log("Connected accounts:", accounts);
+    
             setCurrentAccount(accounts[0]);
             window.location.reload();
         } catch (error) {
-            console.log(error);
-
+            console.error("Error connecting wallet:", error);
             throw new Error("No ethereum object");
         }
     };
+    
 
     const sendTransaction = async () => {
         try {
@@ -157,7 +162,7 @@ export const TransactionProvider = ({ children }) => {
     useEffect(() => {
         checkIfWalletIsConnected();
         checkIfTransactionsExists();
-    }, [transactionCount]);
+    }, []);
 
 
 
